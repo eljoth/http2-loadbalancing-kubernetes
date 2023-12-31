@@ -1,0 +1,28 @@
+alertmanager:
+  enabled: false
+grafana:
+  grafana.ini:
+    users:
+      viewers_can_edit: false
+    auth:
+      disable_login_form: false
+      disable_signout_menu: false
+    auth.anonymous:
+      enabled: true
+      org_role: Viewer
+  enabled: true
+  plugins: []
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'default'
+        orgId: 1
+        folder: ''
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/default
+    dashboardsConfigMaps:
+      default: "seminar"

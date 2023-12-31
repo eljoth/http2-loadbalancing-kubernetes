@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: ausarbeitung.aux
+The style file: plain.bst
+Database file #1: sources.bib
+Warning--entry type for "protobuf" isn't style-file defined
+--line 77 of file sources.bib
+Warning--entry type for "kubernetescomponents" isn't style-file defined
+--line 93 of file sources.bib
+Warning--entry type for "kubernetesservices" isn't style-file defined
+--line 101 of file sources.bib
+Warning--entry type for "xds" isn't style-file defined
+--line 109 of file sources.bib
+Warning--empty journal in SOAP-20000508
+Warning--empty journal in rfc1945
+Warning--empty journal in rfc2616
+Warning--empty journal in rfc2818
+Warning--empty journal in rfc9113
+You've used 14 entries,
+            2118 wiz_defined-function locations,
+            561 strings with 5686 characters,
+and the built_in function-call counts, 4378 in all, are:
+= -- 399
+> -- 230
+< -- 4
++ -- 93
+- -- 78
+* -- 262
+:= -- 729
+add.period$ -- 40
+call.type$ -- 14
+change.case$ -- 80
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 174
+empty$ -- 348
+format.name$ -- 78
+if$ -- 924
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 11
+newline$ -- 69
+num.names$ -- 28
+pop$ -- 126
+preamble$ -- 1
+purify$ -- 67
+quote$ -- 0
+skip$ -- 138
+stack$ -- 0
+substring$ -- 159
+swap$ -- 41
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 54
+warning$ -- 5
+while$ -- 38
+width$ -- 16
+write$ -- 135
+(There were 9 warnings)

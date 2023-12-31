@@ -1,0 +1,161 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: xds
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: xds
+  name: xds-pod-reader
+rules:
+  - apiGroups: [ "" ] # "" indicates the core API group
+    resources: [ "pods" ]
+    verbs: [ "get", "watch", "list" ]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: xds-pod-read
+  namespace: xds
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: xds
+roleRef:
+  kind: Role
+  name: xds-pod-reader
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xdsserver
+  namespace: xds
+  labels:
+    app: xdsserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xdsserver
+  template:
+    metadata:
+      labels:
+        app: xdsserver
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - server
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: xdsserver
+          imagePullPolicy: Always
+          image: localhost:5005/seminar/xds:latest
+          env:
+            - name: CLUSTER_NAME
+              value: "xds"
+            - name: NAMESPACE
+              value: "xds"
+            - name: LISTENER_NAME
+              value: "sem-xds"
+            - name: LABEL_SELECTOR
+              value: "app=server"
+            - name: PORT
+              value: "8082"
+            - name: INTERVAL
+              value: "5s"
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: xdsserver
+  namespace: xds
+  labels:
+    app: xdsserver
+spec:
+  selector:
+    app: xdsserver
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      name: app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+  namespace: xds
+  labels:
+    app: server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - server
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: server
+          imagePullPolicy: Always
+          image: localhost:5005/seminar/server:latest
+          args: [ "--xds" ]
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          ports:
+            - containerPort: 8082
+              name: grpc
+            - containerPort: 9000
+              name: monitoring
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: xds-server-monitor
+  namespace: xds
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: server
+  namespaceSelector:
+    matchNames:
+      - xds
+  podMetricsEndpoints:
+    - port: monitoring

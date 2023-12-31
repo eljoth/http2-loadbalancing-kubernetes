@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  namespace: headless
+  labels:
+    app: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+        - name: client
+          imagePullPolicy: Always
+          image: localhost:5005/seminar/client:latest
+          args: [ "--headless" ]
+          env:
+            - name: HEADLESS_ADDRESS
+              value: server:8080
+            - name: DEFAULT_WAIT_TIME
+              value: 1ms
+          ports:
+            - containerPort: 9000
+              name: monitoring
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: headless-client-monitor
+  namespace: headless
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: client
+  namespaceSelector:
+    matchNames:
+      - headless
+  podMetricsEndpoints:
+    - port: monitoring

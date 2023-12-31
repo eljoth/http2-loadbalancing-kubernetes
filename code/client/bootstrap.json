@@ -1,0 +1,14 @@
+{
+  "xds_servers": [
+    {
+      "server_uri": "",
+      "channel_creds": [
+        {
+          "type": "",
+          "config": ""
+        }
+      ]
+    }
+  ],
+  "node": ""
+}

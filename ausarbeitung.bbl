@@ -1,0 +1,76 @@
+\begin{thebibliography}{10}
+
+\bibitem{kubernetesNetworking}
+Himanshu Agrawal.
+\newblock Networking in kubernetes.
+\newblock In {\em Kubernetes Fundamentals: A Step-by-Step Development and
+  Interview Guide}, pages 211--247. Springer, 2023.
+
+\bibitem{SOAP-20000508}
+Don Box, David Ehnebuske, Gopal Kakivaya, Andrew Layman, Noah Mendelsohn,
+  Henrik~Frystyk Nielsen, Satish Thatte, and Dave Winer.
+\newblock Simple object access protocol (soap) 1.1.
+\newblock May 2000.
+
+\bibitem{7745823}
+Romuald Corbel, Emile Stephan, and Nathalie Omnes.
+\newblock Http/1.1 pipelining vs http2 in-the-clear: Performance comparison.
+\newblock In {\em 2016 13th International Conference on New Technologies for
+  Distributed Systems (NOTERE)}, pages 1--6, 2016.
+
+\bibitem{7179400}
+Hugues de~Saxcé, Iuniana Oprescu, and Yiping Chen.
+\newblock Is http/2 really faster than http/1.1?
+\newblock In {\em 2015 IEEE Conference on Computer Communications Workshops
+  (INFOCOM WKSHPS)}, pages 293--299, 2015.
+
+\bibitem{kubernetescomponents}
+The~Linux Foundation.
+\newblock Kubernetes components, 2023.
+
+\bibitem{kubernetesservices}
+The~Linux Foundation.
+\newblock Service, 2023.
+
+\bibitem{gancarz2003linux}
+Mike Gancarz.
+\newblock {\em Linux and the Unix philosophy}.
+\newblock Digital Press, 2003.
+
+\bibitem{koschel2021look}
+Arne Koschel, Marvin Bertram, Richard Bischof, Kevin Schulze, Marc Schaaf, and
+  Irina Astrova.
+\newblock A look at service meshes.
+\newblock In {\em 2021 12th International Conference on Information,
+  Intelligence, Systems \& Applications (IISA)}, pages 1--8. IEEE, 2021.
+
+\bibitem{protobuf}
+Google LLC.
+\newblock Protocol buffers version 3 language specification, 2023.
+
+\bibitem{rfc1945}
+Henrik Nielsen, Roy~T. Fielding, and Tim Berners-Lee.
+\newblock Hypertext transfer protocol -- {HTTP}/1.0.
+\newblock May 1996.
+
+\bibitem{rfc2616}
+Henrik Nielsen, Jeffrey Mogul, Larry~M Masinter, Roy~T. Fielding, Jim Gettys,
+  Paul~J. Leach, and Tim Berners-Lee.
+\newblock Hypertext transfer protocol -- http/1.1.
+\newblock June 1999.
+
+\bibitem{xds}
+Envoy Project.
+\newblock xds rest and grpc protocol, 2023.
+
+\bibitem{rfc2818}
+Eric Rescorla.
+\newblock Http over tls.
+\newblock May 2000.
+
+\bibitem{rfc9113}
+Martin Thomson and Cory Benfield.
+\newblock Http/2.
+\newblock June 2022.
+
+\end{thebibliography}
