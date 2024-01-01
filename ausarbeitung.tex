@@ -45,8 +45,8 @@
     \section*{Überblick}
     Kubernetes ist im Cloud Nativen Bereich zu einem Industriestandard zur Container Orchestrierung geworden.
     In Kombination mit dem HTTP/2 Protokoll bietet Kubernetes jedoch immer noch einige Fallstricke, die es bei der Entwicklung und Bereitstellung einer auf beiden Technologien basierenden Anwendung zu beachten gibt.
-    Zu Begin werden in Kapitel \ref{sec:grundlagen} die verwendeten Technologien sowie deren Grundlagen dargestellt.
-    Nachdem der Grundstein gelegt ist, wird in kapitel \ref{sec:kernkapitel} eine Beispielanwendung vorgestellt, welche als Referenz HTTP/1 verwendet und an der anschließend verschiedene Möglichkeiten zur Lastverteilung von HTTP/2 Anfragen in einem Kubernetes Cluster exerziert werden.
+    Zu Begin werden in Kapitel~\ref{sec:grundlagen} die verwendeten Technologien sowie deren Grundlagen dargestellt.
+    Nachdem der Grundstein gelegt ist, wird in Kapitel~\ref{sec:kernkapitel} eine Beispielanwendung vorgestellt, welche als Referenz HTTP/1 verwendet und an der anschließend verschiedene Möglichkeiten zur Lastverteilung von HTTP/2 Anfragen in einem Kubernetes Cluster exerziert werden.
     Diese Implementierungen liefern genug Metriken, um sie miteinander zu vergleichen.
     Der Vergleich zwischen den Implementierungen mit Blick auf quantitativ messbare wie Fairness, Performance und qualitative wie die Nutzbarkeit wird in Kapitel~\ref{sec:auswertung} getroffen.
     Abschließend wird in Kapitel~\ref{sec:fazit} das Ergebnis der Arbeit bewertet sowie in Kapitel~\ref{sec:ausblick} Grundlage für weitere Forschung gegeben.
@@ -64,7 +64,7 @@
     \section{Fazit}\label{sec:fazit}
 
     Da HTTP/2 nicht von jeglicher Infrastruktur unterstützt wird und sich daher nur für die interne Kommunikation zwischen Services innerhalb eines Clusters anbietet, sollte stets abgewogen werden, ob es sinnvoll ist, auf gRPC mit HTTP/2 zu setzen.
-    gRPC bietet einige erleichterungen und einen standardisierten Entwicklungsworkflow durch den API First Ansatz.
+    gRPC bietet einige Erleichterungen und einen standardisierten Entwicklungsworkflow durch den API First Ansatz.
     Dieser kommt jedoch mit dem Tradeoff, dass ein Service Mesh installiert und verwaltet werden muss, sollte man alle Features benötigen, welche beim HTTP/1 Loadbalancing von Kubernetes von Hause aus mitgebracht werden.
 
     \newpage

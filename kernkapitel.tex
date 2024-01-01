@@ -18,10 +18,10 @@ Dem Server gegenüber steht der Client, welcher in regelmäßigen, konfigurierba
 
 Über Command Line Argumente können beide Anwendungen in folgenden verschiedenen Modi gestartet werden, welche in den referenzierten Sektionen detaillierter vorgestellt werden:
 \begin{itemize}
-    \item HTTP/1~\ref{subsec:http/1-load-balancing}
-    \item HTTP/2 Standard~\ref{subsubsec:standard}
-    \item HTTP/2 headless Service~\ref{subsubsec:headless}
-    \item HTTP/2 Service Mesh~\ref{subsubsec:mesh}
+    \item HTTP/1~(\ref{subsec:http/1-load-balancing})
+    \item HTTP/2 Standard~(\ref{subsubsec:standard})
+    \item HTTP/2 headless Service~(\ref{subsubsec:headless})
+    \item HTTP/2 Service Mesh~(\ref{subsubsec:mesh})
 \end{itemize}
 Für jeden Laufmodus wird die Anwendung in einem separaten Kubernetes Namespace vorkonfiguriert bereitgestellt.
 Aus Gründen der Vorhersehbarkeit wird auf Horizontal Pod Autoscaler und somit auf die automatische Skalierung der Anwendung auf Basis von Ressourcenmetriken verzichtet.
@@ -55,10 +55,10 @@ Um verschiedene Skalierungsszenarien zu simulieren, wird für jede Laufvariante 
 \end{figure}
 
 Der Server startet mit zwei und der Client mit einer Instanz.
-Da gRPC, wie in~\ref{subsec:grpc} erwähnt, vorwiegend zur In-Cluster Kommunikation verwendet werden sollte, besteht sowohl für den Server, als auch für den Client die Notwendigkeit, bei Bedarf variabel skalierbar zu sein.
+Da gRPC, wie in Sektion~\ref{subsec:grpc} erwähnt, vorwiegend zur In-Cluster Kommunikation verwendet werden sollte, besteht sowohl für den Server, als auch für den Client die Notwendigkeit, bei Bedarf variabel skalierbar zu sein.
 Ersteres Szenario wird durch die Skalierung des Servers abgedeckt.
 Bevor der Client skaliert und somit ein erhöhtes Anfrageaufkommen für den Server generiert wird, wird dieser neu gestartet.
-Dies dient zur Veranschaulichung eines Sonderfalls, auf welchen in~\ref{subsubsec:headless} eingegangen wird.
+Dies dient zur Veranschaulichung eines Sonderfalls, auf welchen in Absatz~\ref{subsubsec:headless} eingegangen wird.
 
 \subsubsection{Weitere Tools und Hardware}
 Zur Bereitstellung des Kubernetes Clusters wird auf das Tool ctlptl von tilt zurückgegriffen.
@@ -88,7 +88,7 @@ Die folgenden Zeitpunkte sind hierbei besonders von Relevanz:
     \item \textbf{T4}: Der Client wird auf dreißig Instanzen skaliert.
 \end{itemize}
 
-Da von diesem Verhalten in den Sektionen~\ref{subsubsec:standard},~\ref{subsubsec:headless} und~\ref{subsubsec:mesh} nicht abgewichen wird und die Zeitpunkte als Referenz nun erläutert wurden, wird auf eine erneute Darstellung dessen im Folgenden verzichtet.
+Da von diesem Verhalten in den Absätzen~\ref{subsubsec:standard},~\ref{subsubsec:headless} und~\ref{subsubsec:mesh} nicht abgewichen wird und die Zeitpunkte als Referenz nun erläutert wurden, wird auf eine erneute Darstellung dessen im Folgenden verzichtet.
 
 \begin{figure}[H]
     \centering
@@ -97,7 +97,7 @@ Da von diesem Verhalten in den Sektionen~\ref{subsubsec:standard},~\ref{subsubse
     \label{fig:rest_rps}
 \end{figure}
 
-Wie an der annähernden Äquivalenz beider Graphen bis T2 in~\ref{fig:rest_rps} zu erkennen ist, werden die Client-Requests von Anfang an sehr gleich auf beide Instanzen des Servers verteilt.
+Wie an der annähernden Äquivalenz beider Graphen bis T2 in Bild~\ref{fig:rest_rps} zu erkennen ist, werden die Client-Requests von Anfang an sehr gleich auf beide Instanzen des Servers verteilt.
 Sobald der Server zum Zeitpunkt T2 auf drei Instanzen skaliert wird, werden die Requests auf drei Server-Instanzen verteilt.
 Dies hat eine Lastverringerung der bereits vorher zur Verfügung gestellten Server-Instanzen sowie einen in Summe erhöhten Gesamtdurchsatz zur Folge.
 Der Neustart zum Zeitpunkt T3 sowie die Skalierung des Clients zum Zeitpunkt T4 haben keinen Einfluss auf die Lastverteilung der Anfragen zum Server, welche gleichbleibend gleich verteilt werden.
@@ -109,7 +109,7 @@ Der Neustart zum Zeitpunkt T3 sowie die Skalierung des Clients zum Zeitpunkt T4 
     \label{fig:rest_latenz}
 \end{figure}
 
-Die Latenz im 99. Perzentil, gezeigt in~\ref{fig:rest_latenz}, verbessert sich zum Zeitpunkt T2 aufgrund der nun möglichen Lastverteilung auf drei Server Instanzen, welche in Summe mehr Rechenleistung zur Verfügung haben.
+Die Latenz im 99. Perzentil, gezeigt in~ Grafik\ref{fig:rest_latenz}, verbessert sich zum Zeitpunkt T2 aufgrund der nun möglichen Lastverteilung auf drei Server Instanzen, welche in Summe mehr Rechenleistung zur Verfügung haben.
 Durch das hohe Aufkommen an Anfragen nach der Client-Skalierung zum Zeitpunkt T4 ist eine Verschlechterung der Latenz zu beobachten, da die Gesamtrechenleistung für den Server unangetastet bleibt.
 
 \subsection{HTTP/2 Load Balancing}\label{subsec:http/2-load-balancing}
@@ -131,8 +131,8 @@ Bis auf diesen, maßgeblichen, Unterschied, bleibt die Konfiguration identisch.
 
 Grafik~\ref{fig:default_rps} spiegelt das Problem dieses Setups gut wider.
 Von zeitpunkt T1 bis T4 ist zu erkennen, dass alle Requests von einem einzigen Server Pod beantwortet werden.
-Diese Tatsache lässt sich damit begründen, dass HTTP/2, wie in~\ref{subsec:hyper-text-transfer-protocol} schon erwähnt, auf langlebigen Verbindungen basiert.
-Zum Start des Clients wird somit eine beständige Verbindung zwischen Client und Server etabliert (siehe~\ref{fig:default_loadbalancing}).
+Diese Tatsache lässt sich damit begründen, dass HTTP/2, wie in Sektion~\ref{subsec:hyper-text-transfer-protocol} schon erwähnt, auf langlebigen Verbindungen basiert.
+Zum Start des Clients wird somit eine beständige Verbindung zwischen Client und Server etabliert (siehe Bild~\ref{fig:default_loadbalancing}).
 Dies hat zur Folge, dass der TCP-handshake vermieden wird und führt zu dem Problem, dass jede einzelne Anfrage über die selbe TCP Verbindung immer an die gleiche Instanz des Servers gesendet wird.
 
 \begin{figure}[H]
@@ -227,7 +227,8 @@ Grafik~\ref{fig:headless_rps} zeigt das Anfrageaufkommen der Pods, welche über 
 Es ist zu erkennen, dass zu T1 mit dem Loadbalancing der Anfragen auf beide verfügbaren Instanzen begonnen wird.
 Die Verteilung findet gleichmäßig statt, was sich wieder an der annähernden Äquivalenz beider Kurven erkennen lässt.
 Zum Zeitpunkt T2, wenn ein neuer Server Pod hinzukommt, ändert sich nichts.
-Eine Änderung ist jedoch zum Zeitpunkt T3, welcher den Neustart der Client Pods markiert, zu beobachten.
+Eine Änderung ist jedoch zum Zeitpunkt T3, zu beobachten.
+Dieser markiert den Neustart des Clients.
 Die aufkommenden Anfragen werden jetzt gleichmäßig auf alle drei Instanzen des Servers verteilt, was einer allgemeinen niedrigeren Last pro Pod entspricht.
 Das Verhalten, dass die Requests erst auf alle Server Instanzen verteilt werden, nachdem die Clients neu gestartet wurden, lässt sich mit der Funktionsweise des Headless Services erklären.
 
@@ -252,14 +253,14 @@ Zieht man jedoch die Ergebnisse in Grafik~\ref{fig:rest_rps} heran, sieht man au
     \label{fig:headless_latenz}
 \end{figure}
 
-Figur~\ref{fig:headless_latenz} gibt einen Überblick über die Latenzen zu diesem Szenario.
+Abbildung~\ref{fig:headless_latenz} gibt einen Überblick über die Latenzen zu diesem Szenario.
 Bis zu Zeitpunkt T4 sind die Latenzen sehr unauffällig und nah beieinander.
 
 \subsubsection{Service Mesh}\label{subsubsec:mesh}
 
-Mit zunehmender Komplexität Cloud nativer Anwendungen stieg der Bedarf, den Verwaltungsaufwand jener wieder zu minimieren.
+Mit zunehmender Komplexität Cloud Nativer Anwendungen stieg der Bedarf, den Verwaltungsaufwand jener wieder zu minimieren.
 Hierfür wurden Service Meshes eingeführt.
-Ein Service Mesh dient als Layer zwischen Applikations- und Orchestrierungsebene und übernimmt eine Vielzahl Aufgaben wie, für unser Szenario relevant, das Netzwerkmanagement.
+Ein Service Mesh dient als Layer zwischen Applikations- und Orchestrierungsebene und übernimmt eine Vielzahl an Aufgaben wie, für unser Szenario relevant, das Netzwerkmanagement.
 
 Jeder Pod, welcher dem Service Mesh zugewiesen wurde, wird mit einem sogenannten Sidecar bereitgestellt.
 Ein Sidecar ist ein zweiter Container innerhalb eines Pods, welcher einem bestimmten Zweck dient~\cite{koschel2021look}.
@@ -351,17 +352,20 @@ Auf Basis der Metrik, welche auch für den Durchsatz (RPS) herangezogen wird, er
     \begin{tabular}{|l|l|l|l|l|}
         \hline
         & Pod 1  & Pod 2  & Pod 3  & Standardabweichung \\ \hline
-        REST     & 265757 & 262532 & 194967 & 32637.153          \\ \hline
-        Standard & 198091 & 665355 & 224484 & 214320.496         \\ \hline
-        Headless & 451578 & 440857 & 245620 & 94663.805          \\ \hline
-        Mesh     & 446578 & 467815 & 467573 & 9954.668           \\ \hline
+        REST     & 265.757 & 262.532 & 194.967 & 32.637,153          \\ \hline
+        Standard & 198.091 & 665.355 & 224.484 & 214.320,496         \\ \hline
+        Headless & 451.578 & 440.857 & 245.620 & 94.663,805          \\ \hline
+        Mesh     & 446.578 & 467.815 & 467.573 & 9.954,668           \\ \hline
     \end{tabular}
-\end{table}\label{tab:requests}
+    \caption{Durchsatz pro Pod und Standardabweichung}
+    \label{tab:requests}
+\end{table}
 
 Tabelle~\ref{tab:requests} zeigt, wie viele Anfragen jeder Pod pro Variante im Zeitraum von T2 bis zum Messende erhalten hat.
-Auf basis dieser Werte wird die Standardabweichung berechnet.
+Auf Basis dieser Werte wird die Standardabweichung berechnet.
 Es ist zu erkennen, dass die Umsetzung über das Service Mesh mit einer Standardabweichung von 9.954,668 Anfragen am fairsten ist.
-An dieser Stelle ist zu erwähnen, dass diese Variante die einzige unter den HTTP/2 Loadbalancing Implementierungen ist, welche sogar fairer ist, als das Kubernetes Standard Loadbalancing von HTTP/1 Anfragen mit einer Standardabweichung von 32.637,153 Anfragen, gefolgt von der Headless Implementierung mit 94.663,805 und der Standard HTTP/2 Implementierung mit 214.320,496 abweichenden Anfragen.
+An dieser Stelle ist zu erwähnen, dass diese Variante die einzige unter den HTTP/2 Loadbalancing Implementierungen ist, welche sogar fairer ist, als das Kubernetes Standard Loadbalancing von HTTP/1 Anfragen mit einer Standardabweichung von 32.637,153 Anfragen.
+Gefolgt wird es von der Headless Implementierung mit 94.663,805 und der Standard HTTP/2 Implementierung mit 214.320,496 abweichenden Anfragen.
 
 \subsection{Performance}\label{subsec:performance}
 
@@ -378,12 +382,14 @@ Wie in Sektion~\ref{subsec:fairness} bereits beschrieben, ist es auch hier sinnv
     \begin{tabular}{|l|l|}
         \hline
         & Durchsatz \\ \hline
-        REST     & 723256    \\ \hline
-        Standard & 1087930   \\ \hline
-        Headless & 1138055   \\ \hline
-        Mesh     & 1381966   \\ \hline
+        REST     & 723.256    \\ \hline
+        Standard & 1.087.930   \\ \hline
+        Headless & 1.138.055   \\ \hline
+        Mesh     & 1.381.966   \\ \hline
     \end{tabular}
-\end{table}\label{tab:durchsatz}
+    \caption{Gesamtdurchsatz}
+    \label{tab:durchsatz}
+\end{table}
 
 Tabelle~\ref{tab:durchsatz} gibt hier einen Überblick über die ermittelten Werte.
 Schon am Vergleich zwischen REST und Standard ist eine erhöhung des Durchsatzes erkennbar, auch wenn Sektion~\ref{subsec:fairness} ergeben hat, dass die Standard Implementierung die unfairste ist.
@@ -394,7 +400,7 @@ Gefolgt wird diese Implementierung von der Headless, welche - ungeachtet der RES
 
 \subsubsection{Latenz}
 Clientseitig ergibt sich die Möglichkeit, das Ergebnis anhand seiner Latenzen zu vergleichen.
-Hier ist es sinnvoll, die Latenzen in dem zeitraum zu betrachten, in dem das System der höchsten Last ausgesetzt war.
+Hier ist es sinnvoll, die Latenzen in dem Zeitraum zu betrachten, in dem das System der höchsten Last ausgesetzt war.
 Dies trifft auf den Zeitraum T4 bis zum Messende zu, da hier durch die Skalierung des Clients auf 30 Pods am meisten Netzwerk-Traffic generiert wurde.
 
 \begin{table}[H]
@@ -407,16 +413,19 @@ Dies trifft auf den Zeitraum T4 bis zum Messende zu, da hier durch die Skalierun
         Headless & 0,007 & 0,088 & 0,098 \\ \hline
         Mesh     & 0,005 & 0,079 & 0,096 \\ \hline
     \end{tabular}
-\end{table}\label{tab:latenz}
+    \caption{Latenzen}
+    \label{tab:latenz}
+\end{table}
 
 Tabelle~\ref{tab:latenz} gibt zu erkennen, dass jede gRPC-Implementierung im Vergleich zur REST Implementierung eine deutlich niedrigere Latenz aufweisen kann.
-Vergleicht man innerhalb dieser Implementierungen die Latenzen miteinander, so lässt sich erkennen, dass Headless minimal langsamer ist als die Standard Implementierung, das hängt vermutlich mit dem client seitigen Loadbalancing zusammen, das den angesprochenen Server auswählt, was bei der Standardimplementierung wegfällt.
+Vergleicht man innerhalb dieser Implementierungen die Latenzen miteinander, so lässt sich erkennen, dass Headless minimal langsamer ist als die Standard Implementierung.
+Das hängt vermutlich mit dem client seitigen Loadbalancing zusammen, das den angesprochenen Server auswählt, was bei der Standardimplementierung wegfällt.
 Schneller als die Standard Implementierung ist noch die Mesh Implementierung.
 Da jedoch die Latenz Unterschiede im Allgemeinen sehr gering sind, können diese vernachlässigt werden und spielen im Vergleich zum Durchsatz und der Fairness eine eher untergeordnete Rolle.
 
 \subsection{Nutzbarkeit}\label{subsec:nutzbarkeit}
 
-Alle Implementierungen wurden nun in Bezug auf ihre Performanz bewertet.
+Alle Implementierungen wurden nun inwelcher den Neustart der Client Pods markiert Bezug auf ihre Performanz bewertet.
 Neben der Performance ist aber auch die Nutzbarkeit ein wichtiger Aspekt.
 So kann nicht jede Implementierung für jedes Nutzungsszenario empfohlen werden.
 Daher folgt eine kurze Nutzbarkeitsbewertung nicht-quantitativer Eigenschaften.
@@ -432,9 +441,10 @@ Clients rufen zu Beginn alle adressierbaren IPs über den Headless Service ab un
 Vorteil gegenüber dem Standard verfahren ist, dass Loadbalancing zumindest zwischen allen bekannten Server Instanzen stattfindet.
 Nachteil an dieser Umsetzung ist, ähnlich dem Nachteil der Standard Umsetzung, dass sie nicht unbedingt serverseitig skalierbar ist.
 Wenn eine neue Server Instanz zur Verfügung gestellt wird, wird diese nur von CLients angesprochen, welche nach der neuen Server Instanz provisioniert werden.
-Daher eignet sich diese variante besonders für den Anwendungsfall, dass der Server gar nicht automatisch skaliert werden soll bei last, sondern stets in einer festen Replicagröße provisioniert ist, da sie abgesehen von der Modifikation des Services, keinerlei Mehraufwand im Vergleich zur Standard Implementierung bedeutet.
+Daher eignet sich diese Variante besonders für den Anwendungsfall, dass der Server gar nicht automatisch skaliert werden soll bei last, sondern stets in einer festen Replicagröße provisioniert ist.
+Das liegt daran, dass sie abgesehen von der Modifikation des Services, keinerlei Mehraufwand im Vergleich zur Standard Implementierung bedeutet.
 
 \subsubsection{Service Mesh}
-Handelt es sich bei dem Ökosystem um ein hoch dynamisches, in dem der Server Lastabhängig skaliert werden soll, so ist diese Umsetzungsmöglichkeit die einzige, welche alle Anforderungen erfüllt.
+Handelt es sich bei dem Ökosystem um ein hoch dynamisches, in dem der Server lastabhängig skaliert werden soll, so ist diese Umsetzungsmöglichkeit die einzige, welche alle Anforderungen erfüllt.
 Wird ein neuer Server provisioniert, so wird dieser direkt von allen bereits existierenden Clients angesprochen.
-Zudem ist diese Variante die fairste und Leistungsfähigste, dafür bedarf sie der Installation eines Service Meshes und arbeitet somit nicht mit Bordmitteln, welche von Kubernetes mitgebracht werden.
+Zudem ist diese Variante die fairste und leistungsfähigste, dafür bedarf sie der Installation eines Service Meshes und arbeitet somit nicht mit Bordmitteln, welche von Kubernetes mitgebracht werden.

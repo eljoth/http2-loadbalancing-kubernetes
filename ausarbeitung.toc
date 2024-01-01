@@ -24,7 +24,7 @@
 \contentsline {subsubsection}{\numberline {3.2.2}Latenz}{19}{subsubsection.86}%
 \contentsline {subsection}{\numberline {3.3}Nutzbarkeit}{20}{subsection.88}%
 \contentsline {subsubsection}{\numberline {3.3.1}Standard}{20}{subsubsection.89}%
-\contentsline {subsubsection}{\numberline {3.3.2}Headless}{20}{subsubsection.90}%
+\contentsline {subsubsection}{\numberline {3.3.2}Headless}{21}{subsubsection.90}%
 \contentsline {subsubsection}{\numberline {3.3.3}Service Mesh}{21}{subsubsection.91}%
 \contentsline {section}{\numberline {4}Fazit}{21}{section.92}%
 \contentsline {section}{\numberline {5}Ausblick}{22}{section.93}%
