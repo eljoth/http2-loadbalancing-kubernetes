@@ -37,6 +37,10 @@ Mike Gancarz.
 \newblock {\em Linux and the Unix philosophy}.
 \newblock Digital Press, 2003.
 
+\bibitem{github}
+Lars Hick.
+\newblock Lastverteilung von http/2-anfragen in kubernetes, 2023.
+
 \bibitem{koschel2021look}
 Arne Koschel, Marvin Bertram, Richard Bischof, Kevin Schulze, Marc Schaaf, and
   Irina Astrova.
