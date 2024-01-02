@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.30)  1 JAN 2024 12:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.30)  1 JAN 2024 14:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1375,12 +1375,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `ausarbeitung.toc'.
 
  [1] [2]
-(./grundlagen.tex [1] [2{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-
-super/cm-super-ts1.enc}] [3] [4] [5]) (./kernkapitel.tex [6]
+(./grundlagen.tex [1]
+Overfull \hbox (34.12193pt too wide) in paragraph at lines 50--56
+\OT1/cmr/m/n/12 len-de-fi-ni-tio-nen von der Im-ple-men-tie-rung er-laubt die e
+nt-wick-ler[]ubergreifende Verst[]andigung
+ []
+
+[2{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}] [3]
+Overfull \hbox (4.582pt too wide) in paragraph at lines 84--85
+\OT1/cmr/m/n/12 Die Li-nux Foun-da-ti-on bie-tet ei-ne aus-ge-zeich-ne-te Do-ku
+-men-ta-ti-on zur wei-te-ren Lekt[]ure
+ []
+
+[4] [5]) (./kernkapitel.tex [6]
 Package svg Info: Last page of `./svg-inkscape/architektur_svg-tex.pdf' is 8 on
  input line 35.
-
-(./svg-inkscape/architektur_svg-tex.pdf_tex
+ (./svg-inkscape/architektur_svg-tex.pdf_tex
 <./svg-inkscape/architektur_svg-tex.pdf, id=146, page=1, 798.73407pt x 438.1368
 7pt>
 File: ./svg-inkscape/architektur_svg-tex.pdf Graphic file (type pdf)
@@ -1666,10 +1677,6 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 87--87
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-10-23>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  27046 strings out of 474398
@@ -1684,7 +1691,7 @@ Here is how much of TeX's memory you used:
 /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></u
 sr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></us
 r/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on ausarbeitung.pdf (27 pages, 1530208 bytes).
+Output written on ausarbeitung.pdf (27 pages, 1530256 bytes).
 PDF statistics:
  506 PDF objects out of 1000 (max. 8388607)
  428 compressed objects within 5 object streams

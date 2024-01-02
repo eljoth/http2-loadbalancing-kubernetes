@@ -9,7 +9,7 @@ Da HTTP sich im OSI-Modell der Anwendungsschicht zuordnen lässt, bringt das Pro
 So bildet HTTP die Grundlage für viele weitere Protokolle wie zum Beispiel Hypertext Transfer Protocol Secure (HTTPS)~\cite{rfc2818} zur verschlüsselten Übertragung von Daten oder das Simple Object Access Protocol (SOAP)~\cite{SOAP-20000508} zur Kommunikation zwischen verteilten Systemen.
 Aufgrund seiner Erweiterbarkeit und einiger Performance Optimierungen in der Vergangenheit liegt HTTP heute in den Versionen 1.0, 1.1 und 2 vor.
 Eine version 3 ist momentan in Entwicklung.
-Die folgenden Abschnitte gehen kurz auf für die folgende Arbeit relevante versionsspezifische Besonderheiten ein.
+Die folgenden Abschnitte geben einen Überblick über für die folgende Arbeit relevante, versionsspezifische Besonderheiten ein.
 
 \subsubsection{HTTP/1.0 und HTTP/1.1}
 HTTP ist ein textbasiertes, zustandsloses Protokoll, was bedeutet, dass sogenannte aus Klartext bestehende Anfragen (Requests) unabhängig voneinander sind.
@@ -33,7 +33,7 @@ Im Wesentlichen werden mit der neuen Version die folgenden Punkte zur Verbesseru
 \subsubsection{HTTP/2}
 
 Obwohl HTTP/1.1 mit dem Pipelining bereits die parallele Übertragung von Requests ermöglicht, birgt diese Technologie einige Nachteile.
-So können beim Pipelining über persistente Verbindungen zu unterschiedlichen Anwendungsszenarien Head of Line Blocking Probleme auftreten.
+So können beim Pipelining über persistente Verbindungen zu unterschiedlichen Anwendungsszenarien Head of Line Blocking Probleme auftreten:
 Obwohl die Anfragen parallel und ohne auf die Antwort zu warten abgeschickt werden, müssen die Antworten in der entsprechenden Reihenfolge vom Server zurückgegeben werden.
 Im schlimmsten Fall geht eine Antwort verloren und die komplette Warteschlange muss auf die erneute Sendung der Antwort warten.
 Schnellere Requests werden so durch langsamere blockiert und schlussendlich erfolgt trotzdem eine sequentielle Abarbeitung der Anfragen~\cite{7179400}.
@@ -47,9 +47,9 @@ HTTP/2 ist abwärtskompatibel zu seinen Vorgängern und wird in RFC9113~\cite{rf
 Corbel et al. zeigen in ihrer Arbeit \textit{HTTP/1.1 pipelining vs HTTP2 in-the-clear: Performance comparison}~\cite{7745823} die Performanceverbesserungen von HTTP/2 gegenüber HTTP/1.1 auf.
 
 \subsection{gRPC}\label{subsec:grpc}
-gRPC ist ein von Google entwickeltes, auf HTTP/2 basierendes Remote Procedure Call (RPC) Framework, welches Quelloffen zur Verfügung gestellt wird.
-Das Framework bringt die Besonderheit mit, dass Schnittstellendefinitionen Programmiersprachenunabhängig in der Interface Definition Language (IDL) namens Protocol Buffers Language (protobuf)~\cite{protobuf} definiert werden können.
-Die Abstraktion der Schnittstellendefinitionen von der Implementierung erlaubt die Entwicklerübergreifende Verständigung auf eine gemeinsame Schnittstelle.
+gRPC ist ein von Google entwickeltes, auf HTTP/2 basierendes Remote Procedure Call (RPC) Framework, welches quelloffen zur Verfügung gestellt wird.
+Das Framework bringt die Besonderheit mit, dass Schnittstellendefinitionen programmiersprachenunabhängig in der Interface Definition Language (IDL) namens Protocol Buffers Language (protobuf)~\cite{protobuf} definiert werden können.
+Die Abstraktion der Schnittstellendefinitionen von der Implementierung erlaubt die entwicklerübergreifende Verständigung auf eine gemeinsame Schnittstelle.
 Zudem bietet das Framework einen Compiler an, welcher die Schnittstellendefinitionen sowohl in Server-, als auch in Client-Code in einer Vielzahl von Programmiersprachen übersetzen kann.
 Mit gRPC kann ein strikter API-First Ansatz verfolgt werden, welcher die Entwicklung von Client und Server unabhängig voneinander ermöglicht.
 Da gRPC auf HTTP/2 basiert, welches von der kompletten Infrastruktur auf dem Weg zwischen Client und Server unterstützt sein muss, bietet sich gRPC vor allem zur Kommunikation zwischen verschiedenen Komponenten innerhalb eines Kubernetes Clusters an, wo die komplette Kommunikationsstrecke technisch in einer Hand liegen.
@@ -63,7 +63,7 @@ Da Kubernetes ein sehr umfangreiches Ökosystem ist, wird in diesem Kapitel auss
 \subsubsection{Kubernetes Control Plane}
 
 Kubernetes ist ein von Google entwickeltes Container Orchestration Framework.
-Für die Cloud-Native Entwicklung eignet es sich besonders gut als Abstraktion mehrerer virtueller Maschinen für eine einfachere, hardware unabhängige Bereitstellung von Anwendungen, welche hoch verfügbar oder skalierbar sein sollen.
+Für die Cloud-Native Entwicklung eignet es sich besonders gut als Abstraktion mehrerer virtueller Maschinen für eine einfachere, hardwareunabhängige Bereitstellung von Anwendungen, welche hoch verfügbar oder skalierbar sein sollen.
 Ein wesentlicher Bestandteil von Kubernetes ist die Control Plane, welche die zentrale Steuerung des Clusters zur Aufgabe hat.
 Die Control Plane besteht aus mehreren Komponenten, welche je nach Anwendungsfall in einer High-Availability Konfiguration laufen können.
 In jedem Fall besteht die Control Plane aus folgenden Komponenten:
@@ -81,7 +81,7 @@ Des Weiteren befinden sich in einem Kubernetes Cluster, bestehend aus mehreren V
     \item \textbf{Kubelet:} Das Kubelet stellt sicher, dass provisionierte Pods entsprechend ihrer Konfiguration laufen.
     \item \textbf{kube-proxy:} Stellt die Kommunikation der Kubernetes Komponenten miteinander sicher.
 \end{itemize}
-Die Linux Foundation bietet eine ausgezeichnete Dokumentation zur weitgehenderen Lektüre in die Kubernetes Control Plane~\cite{kubernetescomponents}.
+Die Linux Foundation bietet eine ausgezeichnete Dokumentation zur weiteren Lektüre in die Kubernetes Control Plane~\cite{kubernetescomponents}.
 \subsubsubsection{Pod}
 Der Pod ist die kleinste kubernetesspezifische Einheit.
 Er besteht aus einem oder mehreren Containern, welche konform der Standards der Open Container Initiative sind.
@@ -112,7 +112,7 @@ Laut Dokumentation~\cite{kubernetesservices}existieren die folgenden:
 \begin{itemize}
     \item \textbf{ClusterIP:} Der Service erhält eine IP-Adresse, welche nur innerhalb des Clusters erreichbar ist.
     \item \textbf{NodePort:} Erlaubt den externen Zugriff auf den Service über das entsprechende Protokoll und den Port.
-    Ermöglicht zudem die eigene Implementierung eines Loadbalancing verfahrens.
+    Ermöglicht zudem die eigene Implementierung eines Loadbalancing Verfahrens.
     \item \textbf{LoadBalancer:} Ist das Kubernetes Cluster über einen Cloud-Provider provisioniert, so wird in diesem Fall automatisch ein Loadbalancer für den Service erstellt, welcher auf diesen verweist.
     \item \textbf{ExternalName:} Erlaubt das direkte Mapping eines DNS Names auf einen Service.
 \end{itemize}

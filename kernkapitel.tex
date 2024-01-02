@@ -130,7 +130,7 @@ Bis auf diesen, maßgeblichen, Unterschied, bleibt die Konfiguration identisch.
 \end{figure}
 
 Grafik~\ref{fig:default_rps} spiegelt das Problem dieses Setups gut wider.
-Von zeitpunkt T1 bis T4 ist zu erkennen, dass alle Requests von einem einzigen Server Pod beantwortet werden.
+Von Zeitpunkt T1 bis T4 ist zu erkennen, dass alle Requests von einem einzigen Server Pod beantwortet werden.
 Diese Tatsache lässt sich damit begründen, dass HTTP/2, wie in Sektion~\ref{subsec:hyper-text-transfer-protocol} schon erwähnt, auf langlebigen Verbindungen basiert.
 Zum Start des Clients wird somit eine beständige Verbindung zwischen Client und Server etabliert (siehe Bild~\ref{fig:default_loadbalancing}).
 Dies hat zur Folge, dass der TCP-handshake vermieden wird und führt zu dem Problem, dass jede einzelne Anfrage über die selbe TCP Verbindung immer an die gleiche Instanz des Servers gesendet wird.
@@ -264,7 +264,7 @@ Ein Service Mesh dient als Layer zwischen Applikations- und Orchestrierungsebene
 
 Jeder Pod, welcher dem Service Mesh zugewiesen wurde, wird mit einem sogenannten Sidecar bereitgestellt.
 Ein Sidecar ist ein zweiter Container innerhalb eines Pods, welcher einem bestimmten Zweck dient~\cite{koschel2021look}.
-Im Falle eines Service Meshes handelt es sich um einen leichtgewichtigen Proxy server, welcher jeglichen Netzwerkverkehr unterbricht und kontrolliert.
+Im Falle eines Service Meshes handelt es sich um einen leichtgewichtigen Proxy Server, welcher jeglichen Netzwerkverkehr unterbricht und kontrolliert.
 
 Es gibt eine Vielzahl verschiedener Implementierungen für Service Meshes.
 Aufgrund der simplen Installationsmöglichkeit wird an dieser Stelle mit LinkerD fortgefahren.
@@ -392,7 +392,7 @@ Wie in Sektion~\ref{subsec:fairness} bereits beschrieben, ist es auch hier sinnv
 \end{table}
 
 Tabelle~\ref{tab:durchsatz} gibt hier einen Überblick über die ermittelten Werte.
-Schon am Vergleich zwischen REST und Standard ist eine erhöhung des Durchsatzes erkennbar, auch wenn Sektion~\ref{subsec:fairness} ergeben hat, dass die Standard Implementierung die unfairste ist.
+Schon am Vergleich zwischen REST und Standard ist eine Erhöhung des Durchsatzes erkennbar, auch wenn Sektion~\ref{subsec:fairness} ergeben hat, dass die Standard Implementierung die unfairste ist.
 Dies hat den Hintergrund, dass der TCP Handshake, welcher einen zeitlichen Aufwand bedeutet, durch die Beständigkeit der HTTP/2-Verbindungen von der Anzahl aller Requests reduziert werden kann auf die Anzahl der Clients.
 Da die Implementierungen Standard, Headless und Mesh auf dem gleichen Protokoll aufbauen, ist ein Vergleich hier besser angebracht.
 Es lässt sich eine Korrelation zur Fairness erkennen, indem die Mesh Implementierung, welche am fairsten ist, auch den höchsten Durchsatz aufweist.
@@ -419,7 +419,7 @@ Dies trifft auf den Zeitraum T4 bis zum Messende zu, da hier durch die Skalierun
 
 Tabelle~\ref{tab:latenz} gibt zu erkennen, dass jede gRPC-Implementierung im Vergleich zur REST Implementierung eine deutlich niedrigere Latenz aufweisen kann.
 Vergleicht man innerhalb dieser Implementierungen die Latenzen miteinander, so lässt sich erkennen, dass Headless minimal langsamer ist als die Standard Implementierung.
-Das hängt vermutlich mit dem client seitigen Loadbalancing zusammen, das den angesprochenen Server auswählt, was bei der Standardimplementierung wegfällt.
+Das hängt vermutlich mit dem clientseitigen Loadbalancing zusammen, das den angesprochenen Server auswählt, was bei der Standardimplementierung wegfällt.
 Schneller als die Standard Implementierung ist noch die Mesh Implementierung.
 Da jedoch die Latenz Unterschiede im Allgemeinen sehr gering sind, können diese vernachlässigt werden und spielen im Vergleich zum Durchsatz und der Fairness eine eher untergeordnete Rolle.
 
@@ -436,12 +436,12 @@ Im Allgemeinen ist diese Umsetzung nicht für den Produktivgebrauch zu empfehlen
 Automatische Skalierung der Server im Falle eines erhöhten Anfrageaufkommens wäre Sinnlos, da nur neue Clients eine Verbindung zu neuen Server Instanzen herstellen können, was auch eher dem Zufall überlassen wird.
 
 \subsubsection{Headless}
-Diese Umsetzung ermöglicht das client seitige Load Balancing.
+Diese Umsetzung ermöglicht das clientseitige Load Balancing.
 Clients rufen zu Beginn alle adressierbaren IPs über den Headless Service ab und verteilen die Last dann im Round Robin verfahren selbst.
 Vorteil gegenüber dem Standard verfahren ist, dass Loadbalancing zumindest zwischen allen bekannten Server Instanzen stattfindet.
 Nachteil an dieser Umsetzung ist, ähnlich dem Nachteil der Standard Umsetzung, dass sie nicht unbedingt serverseitig skalierbar ist.
 Wenn eine neue Server Instanz zur Verfügung gestellt wird, wird diese nur von CLients angesprochen, welche nach der neuen Server Instanz provisioniert werden.
-Daher eignet sich diese Variante besonders für den Anwendungsfall, dass der Server gar nicht automatisch skaliert werden soll bei last, sondern stets in einer festen Replicagröße provisioniert ist.
+Daher eignet sich diese Variante besonders für den Anwendungsfall, dass der Server gar nicht automatisch skaliert werden soll bei Last, sondern stets in einer festen Replicagröße provisioniert ist.
 Das liegt daran, dass sie abgesehen von der Modifikation des Services, keinerlei Mehraufwand im Vergleich zur Standard Implementierung bedeutet.
 
 \subsubsection{Service Mesh}
