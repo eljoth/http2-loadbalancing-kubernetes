@@ -73,8 +73,8 @@
 
     In diesem Paper wird erläutert, warum die Nutzung von HTTP/2 bis heute in einem Kubernetes Kontext problematisch ist.
     Es sind verschiedene Lösungen dargestellt und auf Fairness, Performance und Nutzbarkeit hin verglichen.
-    Seit einiger Zeit befindet sich für gRPC eine weitere Möglichkeit zum Loadbalancing in Entwicklung, welche auf der Technologie xDS von Envoy~\cite{xds}, welche auch vom Service Mesh verwendet werden, basiert.
-    Sie reduziert den Overhead, welcher ein Service Mesh mit sich bringt, bietet jedoch bisher keine vernünftige Möglichkeit, mit vorhandenen Tools bereitgestellt zu werden.
+    Seit einiger Zeit befindet sich für gRPC eine weitere Möglichkeit zum Loadbalancing in Entwicklung, welche auf der Technologie xDS von Envoy~\cite{xds}, welche auch vom Service Mesh verwendet wird, basiert.
+    Sie reduziert den Overhead, welchen ein Service Mesh mit sich bringt, bietet jedoch bisher keine vernünftige Möglichkeit, mit vorhandenen Tools bereitgestellt zu werden.
     So muss für jede Implementierung des xDS-Protokolls eine eigene xDS-Registry entwickelt werden, welche Service Discovery betreibt.
     Diese Technologie bietet eine vielversprechende, ressourcen sparende Erleichterung gegenüber Service Meshes.
 
