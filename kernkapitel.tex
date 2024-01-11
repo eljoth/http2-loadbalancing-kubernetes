@@ -75,7 +75,7 @@ Um für das folgende Kapitel, welches sich mit HTTP/2 Load Balancing beschäftig
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{img/rest_pods}
-    \caption{Client (gestrichelt) und Server (durchgezogen) Pods}
+    \caption{Client- (gestrichelt) und Server- (durchgezogen) Pods}
     \label{fig:rest_pods}
 \end{figure}
 
@@ -105,7 +105,7 @@ Der Neustart zum Zeitpunkt T3 sowie die Skalierung des Clients zum Zeitpunkt T4 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{img/rest_latenz}
-    \caption{Rest Latenz (P99, P95, P50)}
+    \caption{Rest Latenz (P99, P95, P50) in ms}
     \label{fig:rest_latenz}
 \end{figure}
 
@@ -154,7 +154,7 @@ Wichtig ist jedoch weiterhin, dass jeder einzelne dieser Pods immer mit genau de
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{img/default_latenz}
-    \caption{HTTP/2 Standard Latenz (P99, P95, P50)}
+    \caption{HTTP/2 Standard Latenz (P99, P95, P50) in ms}
     \label{fig:default_latenz}
 \end{figure}
 
@@ -249,7 +249,7 @@ Zieht man jedoch die Ergebnisse in Grafik~\ref{fig:rest_rps} heran, sieht man au
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{img/headless_latenz}
-    \caption{Headless Service Latenz (P99, P95, P50)}
+    \caption{Headless Service Latenz (P99, P95, P50) in ms}
     \label{fig:headless_latenz}
 \end{figure}
 
@@ -323,7 +323,7 @@ Ein detaillierter Vergleich der vorgestellten Metriken findet in Kapitel~\ref{se
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{img/mesh_latenz}
-    \caption{Service Mesh Latenz (P99, P95, P50)}
+    \caption{Service Mesh Latenz (P99, P95, P50) in ms}
     \label{fig:mesh_latenz}
 \end{figure}
 
@@ -357,7 +357,7 @@ Auf Basis der Metrik, welche auch für den Durchsatz (RPS) herangezogen wird, er
         Headless & 451.578 & 440.857 & 245.620 & 94.663,805          \\ \hline
         Mesh     & 446.578 & 467.815 & 467.573 & 9.954,668           \\ \hline
     \end{tabular}
-    \caption{Durchsatz pro Pod und Standardabweichung}
+    \caption{Durchsatz pro Pod (in Anfragen) und Standardabweichung}
     \label{tab:requests}
 \end{table}
 
@@ -387,7 +387,7 @@ Wie in Sektion~\ref{subsec:fairness} bereits beschrieben, ist es auch hier sinnv
         Headless & 1.138.055   \\ \hline
         Mesh     & 1.381.966   \\ \hline
     \end{tabular}
-    \caption{Gesamtdurchsatz}
+    \caption{Gesamtdurchsatz in Anfragen}
     \label{tab:durchsatz}
 \end{table}
 
@@ -413,7 +413,7 @@ Dies trifft auf den Zeitraum T4 bis zum Messende zu, da hier durch die Skalierun
         Headless & 0,007 & 0,088 & 0,098 \\ \hline
         Mesh     & 0,005 & 0,079 & 0,096 \\ \hline
     \end{tabular}
-    \caption{Durchschnittliche Latenzen über den Zeitraum T4 bis ende}
+    \caption{Durchschnittliche Latenzen in ms über den Zeitraum T4 bis ende}
     \label{tab:latenz}
 \end{table}
 
