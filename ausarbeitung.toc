@@ -2,29 +2,29 @@
 \contentsline {section}{\numberline {1}Grundlagen}{1}{section.3}%
 \contentsline {subsection}{\numberline {1.1}Hypertext Transfer Protocol}{1}{subsection.4}%
 \contentsline {subsubsection}{\numberline {1.1.1}HTTP/1.0 und HTTP/1.1}{1}{subsubsection.5}%
-\contentsline {subsubsection}{\numberline {1.1.2}HTTP/2}{2}{subsubsection.6}%
-\contentsline {subsection}{\numberline {1.2}gRPC}{3}{subsection.7}%
-\contentsline {subsection}{\numberline {1.3}Kubernetes}{3}{subsection.8}%
-\contentsline {subsubsection}{\numberline {1.3.1}Kubernetes Control Plane}{3}{subsubsection.9}%
-\contentsline {subsubsection}{\numberline {1.3.2}Custom Resource Definitions}{5}{subsubsection.10}%
-\contentsline {section}{\numberline {2}Kernkapitel}{6}{section.11}%
-\contentsline {subsection}{\numberline {2.1}Anwendungsaufbau}{6}{subsection.12}%
-\contentsline {subsubsection}{\numberline {2.1.1}Client-Server-Architektur}{6}{subsubsection.13}%
-\contentsline {subsubsection}{\numberline {2.1.2}Auswertbarkeit}{7}{subsubsection.14}%
-\contentsline {subsubsection}{\numberline {2.1.3}Weitere Tools und Hardware}{8}{subsubsection.17}%
-\contentsline {subsection}{\numberline {2.2}HTTP/1 Load Balancing}{9}{subsection.18}%
-\contentsline {subsection}{\numberline {2.3}HTTP/2 Load Balancing}{11}{subsection.22}%
-\contentsline {subsubsection}{\numberline {2.3.1}Standard Load Balancing}{11}{subsubsection.23}%
-\contentsline {subsubsection}{\numberline {2.3.2}Headless Service}{12}{subsubsection.27}%
-\contentsline {subsubsection}{\numberline {2.3.3}Service Mesh}{15}{subsubsection.64}%
-\contentsline {section}{\numberline {3}Auswertung}{18}{section.80}%
-\contentsline {subsection}{\numberline {3.1}Fairness}{18}{subsection.81}%
-\contentsline {subsection}{\numberline {3.2}Performance}{19}{subsection.83}%
-\contentsline {subsubsection}{\numberline {3.2.1}Durchsatz}{19}{subsubsection.84}%
-\contentsline {subsubsection}{\numberline {3.2.2}Latenz}{19}{subsubsection.86}%
-\contentsline {subsection}{\numberline {3.3}Nutzbarkeit}{20}{subsection.88}%
-\contentsline {subsubsection}{\numberline {3.3.1}Standard}{20}{subsubsection.89}%
-\contentsline {subsubsection}{\numberline {3.3.2}Headless}{21}{subsubsection.90}%
-\contentsline {subsubsection}{\numberline {3.3.3}Service Mesh}{21}{subsubsection.91}%
-\contentsline {section}{\numberline {4}Fazit}{21}{section.92}%
-\contentsline {section}{\numberline {5}Ausblick}{22}{section.93}%
+\contentsline {subsubsection}{\numberline {1.1.2}HTTP/2}{2}{subsubsection.7}%
+\contentsline {subsection}{\numberline {1.2}gRPC}{3}{subsection.8}%
+\contentsline {subsection}{\numberline {1.3}Kubernetes}{3}{subsection.10}%
+\contentsline {subsubsection}{\numberline {1.3.1}Kubernetes Control Plane}{3}{subsubsection.11}%
+\contentsline {subsubsection}{\numberline {1.3.2}Custom Resource Definitions}{6}{subsubsection.14}%
+\contentsline {section}{\numberline {2}Kernkapitel}{7}{section.15}%
+\contentsline {subsection}{\numberline {2.1}Anwendungsaufbau}{7}{subsection.16}%
+\contentsline {subsubsection}{\numberline {2.1.1}Client-Server-Architektur}{7}{subsubsection.17}%
+\contentsline {subsubsection}{\numberline {2.1.2}Auswertbarkeit}{8}{subsubsection.19}%
+\contentsline {subsubsection}{\numberline {2.1.3}Weitere Tools und Hardware}{9}{subsubsection.25}%
+\contentsline {subsection}{\numberline {2.2}HTTP/1 Load Balancing}{10}{subsection.27}%
+\contentsline {subsection}{\numberline {2.3}HTTP/2 Load Balancing}{12}{subsection.31}%
+\contentsline {subsubsection}{\numberline {2.3.1}Standard Load Balancing}{12}{subsubsection.32}%
+\contentsline {subsubsection}{\numberline {2.3.2}Headless Service}{14}{subsubsection.36}%
+\contentsline {subsubsection}{\numberline {2.3.3}Service Mesh}{17}{subsubsection.73}%
+\contentsline {section}{\numberline {3}Auswertung}{20}{section.89}%
+\contentsline {subsection}{\numberline {3.1}Fairness}{20}{subsection.90}%
+\contentsline {subsection}{\numberline {3.2}Performance}{21}{subsection.92}%
+\contentsline {subsubsection}{\numberline {3.2.1}Durchsatz}{21}{subsubsection.93}%
+\contentsline {subsubsection}{\numberline {3.2.2}Latenz}{21}{subsubsection.95}%
+\contentsline {subsection}{\numberline {3.3}Nutzbarkeit}{22}{subsection.97}%
+\contentsline {subsubsection}{\numberline {3.3.1}Standard}{22}{subsubsection.98}%
+\contentsline {subsubsection}{\numberline {3.3.2}Headless}{23}{subsubsection.99}%
+\contentsline {subsubsection}{\numberline {3.3.3}Service Mesh}{23}{subsubsection.101}%
+\contentsline {section}{\numberline {4}Fazit}{23}{section.102}%
+\contentsline {section}{\numberline {5}Ausblick}{24}{section.103}%

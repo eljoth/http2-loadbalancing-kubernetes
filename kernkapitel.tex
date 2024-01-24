@@ -12,9 +12,9 @@ Des Weiteren wird ein Überblick gegeben, wie generierte Daten von der implement
 Da nicht die Anwendung selbst, sondern die Kommunikation zwischen zwei unterschiedlichen Pods und deren Replicas im Vordergrund steht, wird eine einfache Client-Server-Anwendung entwickelt.
 
 Der Server stellt hierbei eine Schnittstelle zur Verfügung.
-Um einen gewissen Rechenaufwand zu erzeugen, berechnet die aufrufbare Schnittstelle für einen gegebenen Wert über das Heron Verfahren die Wurzel und gibt das Ergebnis als Antwort an den Aufrufer zurück.
+Um einen gewissen Rechenaufwand zu erzeugen, berechnet die aufrufbare Schnittstelle für einen gegebenen Wert über das Heron Verfahren~\footnote{Heron Verfahren: Annäherungsverfahren zur Berechnung der Wurzel einer reellen Zahl.} die Wurzel und gibt das Ergebnis als Antwort an den Aufrufer zurück.
 
-Dem Server gegenüber steht der Client, welcher in regelmäßigen, konfigurierbaren Zeit\-ab\-stän\-den eine randomisiert ausgewählte Zahl an die vom Server bereitgestellte Schnittstelle als Anfrage sendet und auf die Antwort mit dem Ergebnis vom Server wartet, bevor eine nächste Anfrage abgesetzt wird.
+Dem Server gegenüber steht der Client, welcher in regelmäßigen, konfigurierbaren Zeit\-ab\-stän\-den eine zufällig ausgewählte Zahl an die vom Server bereitgestellte Schnittstelle als Anfrage sendet und auf die Antwort mit dem Ergebnis vom Server wartet, bevor eine nächste Anfrage abgesetzt wird.
 
 Über Command Line Argumente können beide Anwendungen in folgenden verschiedenen Modi gestartet werden, welche in den referenzierten Sektionen detaillierter vorgestellt werden:
 \begin{itemize}
@@ -37,12 +37,12 @@ Grafik~\ref{fig:setup} visualisiert das komplette Setup, wobei die Client-Server
     \label{fig:setup}
 \end{figure}
 
-Wie zu erkennen ist, wird zur Datenanalyse der Cloud Native Metrik-Scraper Prometheus und zur Darstellung der Daten das Tool Grafana verwendet.
+Wie zu erkennen ist, wird zur Datenanalyse der Cloud Native Metrik-Scraper Prometheus und zur Darstellung der Daten das Tool Grafana~\footnote{Prometheus \& Grafana: Werkzeuge der Grafana Labs zur Verwendung für das Monitoring im Cloud Nativen Kontext.} verwendet.
 Das zur Verfügung gestellte Repository kommt mit einem vorkonfigurierten Dashboard, welches für jeden Laufmodus die folgenden Metriken visualisiert:
 \begin{itemize}
     \item Anzahl Pods pro Client und Server
-    \item Requests pro Sekunde für jeden Server Pod
-    \item Client Latenz im 99ten, 95ten Perzentil sowie Median
+    \item Requests pro Sekunde (RPS) für jeden Server Pod
+    \item Client Latenz~\footnote{Latenz: Zeit, die zwischen Abschicken einer Anfrage und Empfang der entsprechenden Antwort vergeht.} im 99ten, 95ten Perzentil~\footnote{99. Perzentil: bestes Ergebnis der schlechtesten 1\%. Analog 95. Perzentil mit 5\%.} sowie Median
 \end{itemize}
 
 Um verschiedene Skalierungsszenarien zu simulieren, wird für jede Laufvariante der in Grafik~\ref{fig:zeitablauf} dargestellte zeitliche Ablauf festgelegt:
@@ -61,7 +61,7 @@ Bevor der Client skaliert und somit ein erhöhtes Anfrageaufkommen für den Serv
 Dies dient zur Veranschaulichung eines Sonderfalls, auf welchen in Absatz~\ref{subsubsec:headless} eingegangen wird.
 
 \subsubsection{Weitere Tools und Hardware}
-Zur Bereitstellung des Kubernetes Clusters wird auf das Tool ctlptl von tilt zurückgegriffen.
+Zur Bereitstellung des Kubernetes Clusters wird auf das Tool ctlptl von tilt~\footnote{ctlptl: Command Line Tool zur Installation und Verwaltung von Kubernetes-Clustern auf lokalen Rechnern. Entwickelt von der Firma tilt.dev.} zu\-rück\-ge\-grif\-fen.
 Dieses ist so konfiguriert, dass ein Kubernetes Cluster mit Hilfe von KinD (Kubernetes in Docker) provisioniert wird.
 Das Cluster umfasst einen Knoten für die Control Plane sowie vier weitere Knoten als Worker.
 Die im Folgenden vorgestellten Ergebnisse werden auf einem Macbook Pro mit einem Apple M2 Pro und 16 GB RAM ermittelt.
@@ -74,7 +74,7 @@ Daher basieren heute viele Webanwendungen sowie Webserver auf dem Protokoll, wes
 Um für das folgende Kapitel, welches sich mit HTTP/2 Load Balancing beschäftigt, Werte zu liefern, die repräsentieren, wie die Lastverteilung in einer funktionierenden Anwendung aussehen sollten, wird die vorgestellte Anwendung im HTTP/1 bzw. REST-Modus ausgeführt.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/rest_pods}
+    \includegraphics[width=1\textwidth]{img/rest_pods}
     \caption{Client- (gestrichelt) und Server- (durchgezogen) Pods}
     \label{fig:rest_pods}
 \end{figure}
@@ -92,7 +92,7 @@ Da von diesem Verhalten in den Absätzen~\ref{subsubsec:standard},~\ref{subsubse
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/rest_rps}
+    \includegraphics[width=1\textwidth]{img/rest_rps}
     \caption{Server RPS pro REST Pod}
     \label{fig:rest_rps}
 \end{figure}
@@ -104,12 +104,12 @@ Der Neustart zum Zeitpunkt T3 sowie die Skalierung des Clients zum Zeitpunkt T4 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/rest_latenz}
-    \caption{Rest Latenz (P99, P95, P50) in ms}
+    \includegraphics[width=1\textwidth]{img/rest_latenz}
+    \caption{REST Service Latenz (P99, P95, P50) in ms}
     \label{fig:rest_latenz}
 \end{figure}
 
-Die Latenz im 99. Perzentil, gezeigt in~ Grafik\ref{fig:rest_latenz}, verbessert sich zum Zeitpunkt T2 aufgrund der nun möglichen Lastverteilung auf drei Server Instanzen, welche in Summe mehr Rechenleistung zur Verfügung haben.
+Die Latenz im 99. Perzentil, gezeigt in Grafik~\ref{fig:rest_latenz}, verbessert sich zum Zeitpunkt T2 aufgrund der nun möglichen Lastverteilung auf drei Server Instanzen, welche in Summe mehr Rechenleistung zur Verfügung haben.
 Durch das hohe Aufkommen an Anfragen nach der Client-Skalierung zum Zeitpunkt T4 ist eine Verschlechterung der Latenz zu beobachten, da die Gesamtrechenleistung für den Server unangetastet bleibt.
 
 \subsection{HTTP/2 Load Balancing}\label{subsec:http/2-load-balancing}
@@ -120,11 +120,11 @@ An diesem Szenario werden einige Problematiken aufgezeigt, für welche in den fo
 \subsubsection{Standard Load Balancing}\label{subsubsec:standard}
 
 Im Vergleich zu Szenario~\ref{subsec:http/1-load-balancing} wird die Beispielanwendung in diesem Szenario dazu konfiguriert, die gRPC-Implementierung zu verwenden.
-Bis auf diesen, maßgeblichen, Unterschied, bleibt die Konfiguration identisch.
+Bis auf diesen maßgeblichen Unterschied bleibt die Konfiguration identisch.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/default_rps}
+    \includegraphics[width=1\textwidth]{img/default_rps}
     \caption{Server RPS pro HTTP/2 Standard Pod}
     \label{fig:default_rps}
 \end{figure}
@@ -133,7 +133,7 @@ Grafik~\ref{fig:default_rps} spiegelt das Problem dieses Setups gut wider.
 Von Zeitpunkt T1 bis T4 ist zu erkennen, dass alle Requests von einem einzigen Server Pod beantwortet werden.
 Diese Tatsache lässt sich damit begründen, dass HTTP/2, wie in Sektion~\ref{subsec:hyper-text-transfer-protocol} schon erwähnt, auf langlebigen Verbindungen basiert.
 Zum Start des Clients wird somit eine beständige Verbindung zwischen Client und Server etabliert (siehe Bild~\ref{fig:default_loadbalancing}).
-Dies hat zur Folge, dass der TCP-handshake vermieden wird und führt zu dem Problem, dass jede einzelne Anfrage über die selbe TCP Verbindung immer an die gleiche Instanz des Servers gesendet wird.
+Dies hat zur Folge, dass der TCP-handshake vermieden wird und führt zu dem Problem, dass jede einzelne Anfrage über dieselbe TCP Verbindung immer an die gleiche Instanz des Servers gesendet wird.
 
 \begin{figure}[H]
     \centering
@@ -153,7 +153,7 @@ Wichtig ist jedoch weiterhin, dass jeder einzelne dieser Pods immer mit genau de
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/default_latenz}
+    \includegraphics[width=1\textwidth]{img/default_latenz}
     \caption{HTTP/2 Standard Latenz (P99, P95, P50) in ms}
     \label{fig:default_latenz}
 \end{figure}
@@ -218,7 +218,7 @@ spec:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/headless_rps}
+    \includegraphics[width=1\textwidth]{img/headless_rps}
     \caption{Server RPS pro Headless Service Pod}
     \label{fig:headless_rps}
 \end{figure}
@@ -243,12 +243,12 @@ Auch ab Zeitpunkt T4 werden alle Anfragen weiterhin gleichmäßig auf die drei v
     \label{fig:headless_loadbalancing}
 \end{figure}
 
-Vergleicht man Grafik~\ref{fig:headless_rps} mit Grafik~\ref{fig:default_rps}, wird schnell ersichtlich, dass die in Listing~\ref{lst:headless} gezeigte, kleine Anpassung eine große Änderung bewirkt, um das Loadbalancing von HTTP/2 Requests zu verbessern.
+Vergleicht man Grafik~\ref{fig:headless_rps} mit Grafik~\ref{fig:default_rps}, wird schnell ersichtlich, dass die in Listing~\ref{lst:headless} gezeigte kleine Anpassung eine große Änderung bewirkt, um das Loadbalancing von HTTP/2 Requests zu verbessern.
 Zieht man jedoch die Ergebnisse in Grafik~\ref{fig:rest_rps} heran, sieht man auch, dass HTTP/1 Loadbalancing hier im Vergleich qualitativ noch immer besser funktioniert, weil die Anfragen einen neuen Server Pod sofort erreichen, sobald dessen Verfügbarkeit sichergestellt ist.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/headless_latenz}
+    \includegraphics[width=1\textwidth]{img/headless_latenz}
     \caption{Headless Service Latenz (P99, P95, P50) in ms}
     \label{fig:headless_latenz}
 \end{figure}
@@ -268,7 +268,7 @@ Im Falle eines Service Meshes handelt es sich um einen leichtgewichtigen Proxy S
 
 Es gibt eine Vielzahl verschiedener Implementierungen für Service Meshes.
 Aufgrund der simplen Installationsmöglichkeit wird an dieser Stelle mit LinkerD fortgefahren.
-LinkerD bietet ein Command Line Interface an, welches einem hinterlegten Kubernetes Cluster die notwendigen CRDs sowie das Service Mesh selbst installiert.
+LinkerD bietet ein Command Line Interface an, welches einem hinterlegten Kubernetes Cluster die notwendigen Custom Resource Definitions sowie das Service Mesh selbst installiert.
 
 Sobald das Service Mesh im Cluster installiert ist, lassen sich Pods über Annotationen zu einem Mesh zusammenfassen.
 Da im vorliegenden Beispiel jeder Anwendungsfall seinen eigenen Namespace besitzt, lässt sich - wie in Listing~\ref{lst:mesh_namespace} zu sehen - über die Annotation des Namespaces einfach definieren, dass jeder beinhaltete Pod Teil des Service Meshs sein soll.
@@ -307,11 +307,11 @@ In Grafik~\ref{fig:mesh_rps} ist zu erkennen, dass ab T1 eine Lastverteilung zwi
 Ab Zeitpunkt T2, welcher die Skalierung des Server Deployments auf drei Instanzen markiert, ist zu sehen, dass die Last nun auf drei Instanzen verteilt wird, eine dritte Kurve kommt hinzu.
 Der Client Neustart zum Zeitpunkt T3 hat keine sichtlichen Auswirkungen auf die am Server eintreffenden Anfragen pro Sekunde.
 
-Auch eine Erhöhung der Last durch die Skalierung des Client deployments zeigt, dass die Last weiterhin auf die vorhandenen Server Instanzen verteilt wird.
+Auch eine Erhöhung der Last durch die Skalierung des Client Deployments zeigt, dass die Last weiterhin auf die vorhandenen Server Instanzen verteilt wird.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/mesh_rps}
+    \includegraphics[width=1\textwidth]{img/mesh_rps}
     \caption{Server RPS pro Service Mesh Pod}
     \label{fig:mesh_rps}
 \end{figure}
@@ -322,7 +322,7 @@ Ein detaillierter Vergleich der vorgestellten Metriken findet in Kapitel~\ref{se
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/mesh_latenz}
+    \includegraphics[width=1\textwidth]{img/mesh_latenz}
     \caption{Service Mesh Latenz (P99, P95, P50) in ms}
     \label{fig:mesh_latenz}
 \end{figure}
@@ -364,7 +364,7 @@ Auf Basis der Metrik, welche auch für den Durchsatz (RPS) herangezogen wird, er
 Tabelle~\ref{tab:requests} zeigt, wie viele Anfragen jeder Pod pro Variante im Zeitraum von T2 bis zum Messende erhalten hat.
 Auf Basis dieser Werte wird die Standardabweichung berechnet.
 Es ist zu erkennen, dass die Umsetzung über das Service Mesh mit einer Standardabweichung von 9.954,668 Anfragen am fairsten ist.
-An dieser Stelle ist zu erwähnen, dass diese Variante die einzige unter den HTTP/2 Loadbalancing Implementierungen ist, welche sogar fairer ist, als das Kubernetes Standard Loadbalancing von HTTP/1 Anfragen mit einer Standardabweichung von 32.637,153 Anfragen.
+An dieser Stelle ist zu erwähnen, dass diese Variante die einzige unter den HTTP/2 Loadbalancing Implementierungen ist, welche sogar fairer ist als das Kubernetes Standard Loadbalancing von HTTP/1 Anfragen mit einer Standardabweichung von 32.637,153 Anfragen.
 Gefolgt wird es von der Headless Implementierung mit 94.663,805 und der Standard HTTP/2 Implementierung mit 214.320,496 abweichenden Anfragen.
 
 \subsection{Performance}\label{subsec:performance}
@@ -425,7 +425,7 @@ Da jedoch die Latenz Unterschiede im Allgemeinen sehr gering sind, können diese
 
 \subsection{Nutzbarkeit}\label{subsec:nutzbarkeit}
 
-Alle Implementierungen wurden nun inwelcher den Neustart der Client Pods markiert Bezug auf ihre Performanz bewertet.
+Alle Implementierungen wurden nun in Bezug auf ihre Performanz bewertet.
 Neben der Performance ist aber auch die Nutzbarkeit ein wichtiger Aspekt.
 So kann nicht jede Implementierung für jedes Nutzungsszenario empfohlen werden.
 Daher folgt eine kurze Nutzbarkeitsbewertung nicht-quantitativer Eigenschaften.
@@ -433,16 +433,17 @@ Daher folgt eine kurze Nutzbarkeitsbewertung nicht-quantitativer Eigenschaften.
 \subsubsection{Standard}
 Die Standard Implementierung sollte aufzeigen, warum verschiedene Ansätze des Loadbalancings für HTTP/2 Applikationen betrachtet werden.
 Im Allgemeinen ist diese Umsetzung nicht für den Produktivgebrauch zu empfehlen, da sie nur mit der Anzahl der Clients skaliert.
-Automatische Skalierung der Server im Falle eines erhöhten Anfrageaufkommens wäre Sinnlos, da nur neue Clients eine Verbindung zu neuen Server Instanzen herstellen können, was auch eher dem Zufall überlassen wird.
+Automatische Skalierung der Server im Falle eines erhöhten Anfrageaufkommens wäre sinnlos, da nur neue Clients eine Verbindung zu neuen Server Instanzen herstellen können, was auch eher dem Zufall überlassen wird.
+Eine valide Einsatzmöglichkeit wäre, wenn sicher davon ausgegangen werden kann, dass stets genau eine Instanz des Servers bereitgestellt wird.
 
 \subsubsection{Headless}
 Diese Umsetzung ermöglicht das clientseitige Load Balancing.
-Clients rufen zu Beginn alle adressierbaren IPs über den Headless Service ab und verteilen die Last dann im Round Robin verfahren selbst.
-Vorteil gegenüber dem Standard verfahren ist, dass Loadbalancing zumindest zwischen allen bekannten Server Instanzen stattfindet.
+Clients rufen zu Beginn alle adressierbaren IPs über den Headless Service ab und verteilen die Last dann im Round Robin~\footnote{Round Robin: Auch Ringverfahren, es existiert eine feste Liste, die abgearbeitet wird. Am Ende wird beim ersten Eintrag in der Liste von Vorne begonnen.} Verfahren selbst.
+Vorteil gegenüber dem Standard Verfahren ist, dass Loadbalancing zumindest zwischen allen bekannten Server Instanzen stattfindet.
 Nachteil an dieser Umsetzung ist, ähnlich dem Nachteil der Standard Umsetzung, dass sie nicht unbedingt serverseitig skalierbar ist.
-Wenn eine neue Server Instanz zur Verfügung gestellt wird, wird diese nur von CLients angesprochen, welche nach der neuen Server Instanz provisioniert werden.
+Wenn eine neue Server Instanz zur Verfügung gestellt wird, wird diese nur von Clients angesprochen, welche nach der neuen Server Instanz provisioniert werden.
 Daher eignet sich diese Variante besonders für den Anwendungsfall, dass der Server gar nicht automatisch skaliert werden soll bei Last, sondern stets in einer festen Replicagröße provisioniert ist.
-Das liegt daran, dass sie abgesehen von der Modifikation des Services, keinerlei Mehraufwand im Vergleich zur Standard Implementierung bedeutet.
+Setzt man diese Annahme voraus, erfordert diese Variante keinerlei Mehraufwand im Vergleich zur Standard Implementierung, wenn man von der minimalen Änderung des Kubernetes Services absieht.
 
 \subsubsection{Service Mesh}
 Handelt es sich bei dem Ökosystem um ein hoch dynamisches, in dem der Server lastabhängig skaliert werden soll, so ist diese Umsetzungsmöglichkeit die einzige, welche alle Anforderungen erfüllt.

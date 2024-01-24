@@ -1,62 +1,62 @@
 This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: ausarbeitung.aux
-The style file: plain.bst
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: sources.bib
-Warning--entry type for "protobuf" isn't style-file defined
---line 77 of file sources.bib
-Warning--entry type for "kubernetescomponents" isn't style-file defined
---line 93 of file sources.bib
-Warning--entry type for "kubernetesservices" isn't style-file defined
---line 101 of file sources.bib
-Warning--entry type for "xds" isn't style-file defined
---line 109 of file sources.bib
-Warning--entry type for "github" isn't style-file defined
---line 117 of file sources.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in rfc2818
 Warning--empty journal in SOAP-20000508
 Warning--empty journal in rfc1945
 Warning--empty journal in rfc2616
-Warning--empty journal in rfc2818
 Warning--empty journal in rfc9113
-You've used 15 entries,
-            2118 wiz_defined-function locations,
-            564 strings with 5749 characters,
-and the built_in function-call counts, 4575 in all, are:
-= -- 416
-> -- 237
-< -- 4
-+ -- 96
-- -- 80
-* -- 268
-:= -- 761
-add.period$ -- 42
-call.type$ -- 15
-change.case$ -- 84
-chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 181
-empty$ -- 370
-format.name$ -- 80
-if$ -- 967
+
+Done.
+You've used 19 entries,
+            4087 wiz_defined-function locations,
+            916 strings with 9992 characters,
+and the built_in function-call counts, 9681 in all, are:
+= -- 728
+> -- 219
+< -- 34
++ -- 112
+- -- 46
+* -- 417
+:= -- 1624
+add.period$ -- 40
+call.type$ -- 19
+change.case$ -- 18
+chr.to.int$ -- 81
+cite$ -- 24
+duplicate$ -- 729
+empty$ -- 879
+format.name$ -- 54
+if$ -- 2184
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 11
-newline$ -- 73
-num.names$ -- 30
-pop$ -- 135
+int.to.str$ -- 19
+missing$ -- 154
+newline$ -- 106
+num.names$ -- 19
+pop$ -- 436
 preamble$ -- 1
-purify$ -- 70
-quote$ -- 0
-skip$ -- 146
+purify$ -- 0
+quote$ -- 2
+skip$ -- 736
 stack$ -- 0
-substring$ -- 164
-swap$ -- 42
-text.length$ -- 4
+substring$ -- 199
+swap$ -- 502
+text.length$ -- 7
 text.prefix$ -- 0
-top$ -- 0
-type$ -- 58
+top$ -- 5
+type$ -- 19
 warning$ -- 5
-while$ -- 40
-width$ -- 17
-write$ -- 143
-(There were 10 warnings)
+while$ -- 36
+width$ -- 21
+write$ -- 206
+(There were 5 warnings)

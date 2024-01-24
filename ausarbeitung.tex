@@ -23,7 +23,7 @@
 \definecolor{srcgray}{rgb}{0.5,0.5,0.5}
 \definecolor{srcred}{rgb}{0.5,0,0}
 %% Diese Zeile unbedingt stehen lassen und anpassen - sie enthält Autor und Titel der Ausarbeitung
-\mywork{Lars Hick}{Lastverteilung von HTTP/2-Anfragen in Kubernetes}
+\mywork{Lars Hick \linebreak M.Sc. Informatik}{Lastverteilung von HTTP/2-Anfragen in Kubernetes}
 
 \begin{document}
     %% Bei Diplomarbeiten folgende Zeile nutzen
@@ -45,7 +45,7 @@
     \section*{Überblick}
     Kubernetes ist im Cloud Nativen Bereich zu einem Industriestandard zur Container Orchestrierung geworden.
     In Kombination mit dem HTTP/2 Protokoll bietet Kubernetes jedoch immer noch einige Fallstricke, die es bei der Entwicklung und Bereitstellung einer auf beiden Technologien basierenden Anwendung zu beachten gibt.
-    Zu Begin werden in Kapitel~\ref{sec:grundlagen} die verwendeten Technologien sowie deren Grundlagen dargestellt.
+    Zu Beginn werden in Kapitel~\ref{sec:grundlagen} die verwendeten Technologien sowie deren Grundlagen dargestellt.
     Nachdem der Grundstein gelegt ist, wird in Kapitel~\ref{sec:kernkapitel} eine Beispielanwendung vorgestellt, welche als Referenz HTTP/1 verwendet und an der anschließend verschiedene Möglichkeiten zur Lastverteilung von HTTP/2 Anfragen in einem Kubernetes Cluster exerziert werden.
     Diese Implementierungen liefern genug Metriken, um sie miteinander zu vergleichen.
     Der Vergleich zwischen den Implementierungen mit Blick auf quantitativ messbare Größen wie Fairness, Performance und qualitative wie die Nutzbarkeit wird in Kapitel~\ref{sec:auswertung} getroffen.
@@ -72,17 +72,17 @@
     \section{Ausblick}\label{sec:ausblick}
 
     In diesem Paper wird erläutert, warum die Nutzung von HTTP/2 bis heute in einem Kubernetes Kontext problematisch ist.
-    Es sind verschiedene Lösungen dargestellt und auf Fairness, Performance und Nutzbarkeit hin verglichen.
-    Seit einiger Zeit befindet sich für gRPC eine weitere Möglichkeit zum Loadbalancing in Entwicklung, welche auf der Technologie xDS von Envoy~\cite{xds}, welche auch vom Service Mesh verwendet wird, basiert.
-    Sie reduziert den Overhead, welchen ein Service Mesh mit sich bringt, bietet jedoch bisher keine vernünftige Möglichkeit, mit vorhandenen Tools bereitgestellt zu werden.
+    Es sind verschiedene Lösungen dargestellt und auf Fairness, Performance und Nutzbarkeit hin verglichen worden.
+    Seit einiger Zeit befindet sich für gRPC eine weitere Möglichkeit zum Loadbalancing in Entwicklung, welche auf der Technologie xDS von Envoy~\cite{xds}, welche auch von Service Meshes verwendet wird, basiert.
+    Sie reduziert den Overhead, den ein Service Mesh mit sich bringt, bietet jedoch bisher keine vernünftige Möglichkeit, mit vorhandenen Tools bereitgestellt zu werden.
     So muss für jede Implementierung des xDS-Protokolls eine eigene xDS-Registry entwickelt werden, welche Service Discovery betreibt.
-    Diese Technologie bietet eine vielversprechende, ressourcen sparende Erleichterung gegenüber Service Meshes.
+    Trotzdem bietet diese Technologie eine vielversprechende, ressourcen sparende Erleichterung gegenüber Service Meshes.
 
     \appendix
 
     \newpage
 
     \bibliography{sources}
-    \bibliographystyle{plain}
+    \bibliographystyle{IEEEtran}
     \erklaerung{(Abgabedatum)}
 \end{document}
