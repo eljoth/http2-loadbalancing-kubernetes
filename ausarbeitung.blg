@@ -18,45 +18,45 @@ Warning--empty journal in rfc2616
 Warning--empty journal in rfc9113
 
 Done.
-You've used 19 entries,
+You've used 25 entries,
             4087 wiz_defined-function locations,
-            916 strings with 9992 characters,
-and the built_in function-call counts, 9681 in all, are:
-= -- 728
-> -- 219
-< -- 34
-+ -- 112
-- -- 46
-* -- 417
-:= -- 1624
-add.period$ -- 40
-call.type$ -- 19
-change.case$ -- 18
-chr.to.int$ -- 81
-cite$ -- 24
-duplicate$ -- 729
-empty$ -- 879
-format.name$ -- 54
-if$ -- 2184
+            942 strings with 10713 characters,
+and the built_in function-call counts, 12401 in all, are:
+= -- 963
+> -- 260
+< -- 45
++ -- 134
+- -- 54
+* -- 515
+:= -- 2113
+add.period$ -- 52
+call.type$ -- 25
+change.case$ -- 24
+chr.to.int$ -- 105
+cite$ -- 30
+duplicate$ -- 931
+empty$ -- 1109
+format.name$ -- 63
+if$ -- 2795
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 154
-newline$ -- 106
-num.names$ -- 19
-pop$ -- 436
+int.to.str$ -- 25
+missing$ -- 199
+newline$ -- 132
+num.names$ -- 25
+pop$ -- 551
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 736
+skip$ -- 952
 stack$ -- 0
-substring$ -- 199
-swap$ -- 502
-text.length$ -- 7
+substring$ -- 257
+swap$ -- 654
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 19
+type$ -- 25
 warning$ -- 5
-while$ -- 36
-width$ -- 21
-write$ -- 206
+while$ -- 46
+width$ -- 27
+write$ -- 267
 (There were 5 warnings)

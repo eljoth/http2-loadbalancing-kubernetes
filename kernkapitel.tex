@@ -109,7 +109,7 @@ Der Neustart zum Zeitpunkt T3 sowie die Skalierung des Clients zum Zeitpunkt T4 
     \label{fig:rest_latenz}
 \end{figure}
 
-Die Latenz im 99. Perzentil, gezeigt in Grafik~\ref{fig:rest_latenz}, verbessert sich zum Zeitpunkt T2 aufgrund der nun möglichen Lastverteilung auf drei Server Instanzen, welche in Summe mehr Rechenleistung zur Verfügung haben.
+Die in Grafik~\ref{fig:rest_latenz} gezeigte Latenz im 99. Perzentil verbessert sich zum Zeitpunkt T2 aufgrund der nun möglichen Lastverteilung auf drei Server Instanzen, welche in Summe mehr Rechenleistung zur Verfügung haben.
 Durch das hohe Aufkommen an Anfragen nach der Client-Skalierung zum Zeitpunkt T4 ist eine Verschlechterung der Latenz zu beobachten, da die Gesamtrechenleistung für den Server unangetastet bleibt.
 
 \subsection{HTTP/2 Load Balancing}\label{subsec:http/2-load-balancing}
@@ -132,7 +132,7 @@ Bis auf diesen maßgeblichen Unterschied bleibt die Konfiguration identisch.
 Grafik~\ref{fig:default_rps} spiegelt das Problem dieses Setups gut wider.
 Von Zeitpunkt T1 bis T4 ist zu erkennen, dass alle Requests von einem einzigen Server Pod beantwortet werden.
 Diese Tatsache lässt sich damit begründen, dass HTTP/2, wie in Sektion~\ref{subsec:hyper-text-transfer-protocol} schon erwähnt, auf langlebigen Verbindungen basiert.
-Zum Start des Clients wird somit eine beständige Verbindung zwischen Client und Server etabliert (siehe Bild~\ref{fig:default_loadbalancing}).
+Zum Start des Clients wird somit eine beständige Verbindung zwischen Client und Server etabliert (siehe Bild~\ref{fig:default_loadbalancing}, dicker Pfeil).
 Dies hat zur Folge, dass der TCP-handshake vermieden wird und führt zu dem Problem, dass jede einzelne Anfrage über dieselbe TCP Verbindung immer an die gleiche Instanz des Servers gesendet wird.
 
 \begin{figure}[H]
@@ -172,7 +172,7 @@ Im Gegensatz dazu zeigt Listing~\ref{lst:headless} die Definition eines Headless
 Ein Headless Service birgt die Besonderheit, dass in seiner Definition explizit angegeben wird, dass keine IP zugewiesen werden soll.
 Da der Service nun keine eigene IP besitzt, werden für einen Namespace Lookup alle bekannten Pod-IPs zurückgegeben~\cite{kubernetesNetworking}.
 Dieses Verhalten können wir uns im Client zunutze machen.
-Zum Start des Clients werden vom Server alle bekannten IP-Adressen der Anfragen-bearbeitenden Pods geliefert.
+Zum Start des Clients werden vom Server alle bekannten IP-Adressen der Anfragenbearbeitenden Pods geliefert.
 Der Client kann nun selbst entscheiden, welcher Server zur Bearbeitung der Anfrage aufgerufen wird.
 Es findet clientseitiges Loadbalancing statt.
 
@@ -267,7 +267,7 @@ Ein Sidecar ist ein zweiter Container innerhalb eines Pods, welcher einem bestim
 Im Falle eines Service Meshes handelt es sich um einen leichtgewichtigen Proxy Server, welcher jeglichen Netzwerkverkehr unterbricht und kontrolliert.
 
 Es gibt eine Vielzahl verschiedener Implementierungen für Service Meshes.
-Aufgrund der simplen Installationsmöglichkeit wird an dieser Stelle mit LinkerD fortgefahren.
+Aufgrund der simplen Installationsmöglichkeit wird an dieser Stelle mit LinkerD~\footnote{https://linkerd.io/} fortgefahren.
 LinkerD bietet ein Command Line Interface an, welches einem hinterlegten Kubernetes Cluster die notwendigen Custom Resource Definitions sowie das Service Mesh selbst installiert.
 
 Sobald das Service Mesh im Cluster installiert ist, lassen sich Pods über Annotationen zu einem Mesh zusammenfassen.
@@ -334,13 +334,13 @@ Ein detaillierter Vergleich der vorgestellten Metriken findet in Kapitel~\ref{se
 
 Das folgende Kapitel beschäftigt sich mit der Auswertung der in den vorangegangen Kapiteln vorgestellten Metriken.
 Zu Beginn wird auf die Fairness der verschiedenen Implementierungen eingegangen.
-Anschließend werden die verschiedenen vorgestellten Varianten der Bereitstellung auf ihre Performance hin untersucht.
+Anschließend werden die verschiedenen vorgestellten Varianten der Bereitstellung auf ihre Performanz hin untersucht.
 Abschließend wird die Nutzbarkeit der Lösungen verglichen.
 Hier spielen weniger Metriken als Qualitätsmerkmale der Lösungen zur Nutzbarkeit in der Praxis eine Rolle.
 
 \subsection{Fairness}\label{subsec:fairness}
 
-Fairness spielt in Hinblick auf Skalierbarkeit eine große Rolle und ist eine notwendige Bedingung für die Erreichbarkeit guter Performance.
+Fairness spielt in Hinblick auf Skalierbarkeit eine große Rolle und ist eine notwendige Bedingung für die Erreichbarkeit guter Performanz.
 Ohne ein faires Loadbalancing kann nicht sichergestellt werden, dass jede Instanz eines Deployments bestmöglich ausgelastet werden kann.
 
 Um die Fairness zu bewerten, genügt es zu beobachten, wie viele Anfragen jede Instanz in einem gegebenen Zeitraum erreichen.
@@ -367,9 +367,9 @@ Es ist zu erkennen, dass die Umsetzung über das Service Mesh mit einer Standard
 An dieser Stelle ist zu erwähnen, dass diese Variante die einzige unter den HTTP/2 Loadbalancing Implementierungen ist, welche sogar fairer ist als das Kubernetes Standard Loadbalancing von HTTP/1 Anfragen mit einer Standardabweichung von 32.637,153 Anfragen.
 Gefolgt wird es von der Headless Implementierung mit 94.663,805 und der Standard HTTP/2 Implementierung mit 214.320,496 abweichenden Anfragen.
 
-\subsection{Performance}\label{subsec:performance}
+\subsection{Performanz}\label{subsec:performance}
 
-Die Performance kann anhand zweier Metriken gemessen werden.
+Die Performanz kann anhand zweier Metriken gemessen werden.
 Diese Metriken betreffen zum einen den serverseitig messbaren Durchsatz sowie die clientseitig messbare Latenz, also die Dauer von Absetzen der Anfrage bis zum Empfang der entsprechenden Antwort.
 
 \subsubsection{Durchsatz}
@@ -426,7 +426,7 @@ Da jedoch die Latenz Unterschiede im Allgemeinen sehr gering sind, können diese
 \subsection{Nutzbarkeit}\label{subsec:nutzbarkeit}
 
 Alle Implementierungen wurden nun in Bezug auf ihre Performanz bewertet.
-Neben der Performance ist aber auch die Nutzbarkeit ein wichtiger Aspekt.
+Neben der Performanz ist aber auch die Nutzbarkeit ein wichtiger Aspekt.
 So kann nicht jede Implementierung für jedes Nutzungsszenario empfohlen werden.
 Daher folgt eine kurze Nutzbarkeitsbewertung nicht-quantitativer Eigenschaften.
 

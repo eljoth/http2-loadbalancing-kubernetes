@@ -21,6 +21,11 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{kumar2014osi}
+S.~Kumar, S.~Dalal, and V.~Dixit, ``The osi model: Overview on the seven layers
+  of computer networks,'' \emph{International Journal of Computer Science and
+  Information Technology Research}, vol.~2, no.~3, pp. 461--466, 2014.
+
 \bibitem{rfc2818}
 \BIBentryALTinterwordspacing
 E.~Rescorla, ``Http over tls,'' May 2000. [Online]. Available:
@@ -33,6 +38,18 @@ D.~Box, D.~Ehnebuske, G.~Kakivaya, A.~Layman, N.~Mendelsohn, H.~F. Nielsen,
   S.~Thatte, and D.~Winer, ``Simple object access protocol (soap) 1.1,'' May
   2000. [Online]. Available:
   \url{https://www.w3.org/TR/2000/NOTE-SOAP-20000508/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{rfc9000}
+\BIBentryALTinterwordspacing
+M.~Bishop. (2022) Quick. [Online]. Available:
+  \url{https://datatracker.ietf.org/doc/rfc9000/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{rfc9114}
+\BIBentryALTinterwordspacing
+------. (2022) Http/3. [Online]. Available:
+  \url{https://datatracker.ietf.org/doc/html/rfc9114}
 \BIBentrySTDinterwordspacing
 
 \bibitem{rfc1945}
@@ -72,6 +89,12 @@ G.~LLC. (2023) Protocol buffers version 3 language specification. [Online].
   Available: \url{https://protobuf.dev/reference/protobuf/proto3-spec/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Hick2019}
+L.~Hick, ``{Erweiterung von Komponenten-basierten Performance Modellen f{\"u}r
+  Micro-service Architekturen},'' {Bachelor Thesis}, University of
+  W{\"u}rzburg, Am Hubland, Informatikgeb{\"a}ude, 97074 W{\"u}rzburg, Germany,
+  02 2019.
+
 \bibitem{8125550}
 D.~Gannon, R.~Barga, and N.~Sundaresan, ``Cloud-native applications,''
   \emph{IEEE Cloud Computing}, vol.~4, no.~5, pp. 16--21, 2017.
@@ -98,9 +121,21 @@ O.~C. Initiative. (2024) About the open container initiative. [Online].
   Available: \url{https://opencontainers.org/about/overview/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{kubernetespods}
+\BIBentryALTinterwordspacing
+T.~L. Foundation. (2024) Service. [Online]. Available:
+  \url{https://kubernetes.io/docs/concepts/workloads/pods/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{kubernetesdeployments}
+\BIBentryALTinterwordspacing
+------. (2024) Service. [Online]. Available:
+  \url{https://kubernetes.io/docs/concepts/workloads/controllers/deployment/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{kubernetesservices}
 \BIBentryALTinterwordspacing
-T.~L. Foundation. (2023) Service. [Online]. Available:
+------. (2023) Service. [Online]. Available:
   \url{https://kubernetes.io/docs/concepts/services-networking/service/}
 \BIBentrySTDinterwordspacing
 
